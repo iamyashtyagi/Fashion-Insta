@@ -7,7 +7,7 @@ from hashtag import get_posts
 app = Flask(__name__)
 
 category = dict({'tops': (15047112, 1684544), 'shirt': (14924016, 13278952)})
-social_media = set(["Instgram", "Ins", "ins", "Insta"])
+social_media = set(["Instgram", "Ins", "ins", "Insta","insta"])
 social_media_set = set()
 print(type(social_media_set))
 
