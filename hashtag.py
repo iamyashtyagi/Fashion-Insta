@@ -10,7 +10,6 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 import urllib.request
 
-from api import curl
 
 
 def load_fetch_post(driver):
@@ -57,8 +56,8 @@ def load_fetch_post(driver):
 
     return image_list
 
-def get_image_data(fileName):
-    curl(fileName)
+def get_image_data(fileName,file):
+    curl(fileName,file)
 
 def userLogin():
     getdriver = constants.INSTAGRAM_LOGIN
@@ -81,11 +80,13 @@ def userLogin():
         wr.writerow(l)
     files = os.listdir('/Users/300073043/Desktop/hack/images/')
     for file in files:
-        get_image_data(str(file))
+        print('file is '+file)
+        get_image_data('/Users/300073043/Desktop/hack/images/'+str(file),file)
 
+def curl(fileName,file):
+    os.system("sh /Users/300073043/Desktop/hack/scripts/curl.sh "+fileName+" "+file)
 
-
-def get_hashtags_posts():
+def get_posts():
     userLogin()
     return "data refreshed successfully"
 
