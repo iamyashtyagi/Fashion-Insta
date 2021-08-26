@@ -1,10 +1,16 @@
 import csv
+import os
 import sys
+
+import requests
+
 import constants
 from time import sleep
 from bs4 import BeautifulSoup
 from selenium import webdriver
 import urllib.request
+
+from api import curl
 
 
 def load_fetch_post(driver):
@@ -51,6 +57,8 @@ def load_fetch_post(driver):
 
     return image_list
 
+def get_image_data(fileName):
+    curl(fileName)
 
 def userLogin():
     getdriver = constants.INSTAGRAM_LOGIN
@@ -71,15 +79,13 @@ def userLogin():
     with open("image_url.csv","w") as f:
         wr = csv.writer(f,delimiter="\n")
         wr.writerow(l)
+    files = os.listdir('/Users/300073043/Desktop/hack/images/')
+    for file in files:
+        get_image_data(str(file))
 
 
-def get_hashtags_posts(query):
+
+def get_hashtags_posts():
     userLogin()
-    return "posts"
+    return "data refreshed successfully"
 
-
-if __name__ == "__main__":
-    hashtag = "hrithik"
-    posts = get_hashtags_posts(hashtag)
-
-    print(posts)
